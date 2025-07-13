@@ -1,69 +1,110 @@
-# React + TypeScript + Vite
+# D&D App - Gestor de Personajes de Dungeons & Dragons
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web moderna para gestionar personajes de Dungeons & Dragons, construida con React, TypeScript y Vite.
 
-Currently, two official plugins are available:
+## Características Principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎮 Gestión completa de personajes
 
-## Expanding the ESLint configuration
+  - Crear nuevos personajes
+  - Ver detalles de personajes
+  - Editar atributos
+  - Eliminar personajes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🔍 Sistema de filtrado avanzado
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+  - Buscar por nombre
+  - Filtrar por raza
+  - Filtrar por clase
+  - Filtrar por estado
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- 📊 Visualización de estadísticas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+  - Total de personajes
+  - Personajes activos
+  - Nivel promedio
+
+- 📱 Interfaz responsive
+  - Vista en cuadrícula
+  - Vista en lista
+  - Ordenamiento por nombre y nivel
+
+## Tecnologías Utilizadas
+
+- React 18
+- TypeScript
+- Vite
+- React Router DOM
+- Lucide React (iconos)
+- Tailwind CSS
+- Shadcn UI Components
+
+## Requisitos
+
+- Node.js 18+
+- npm o yarn
+
+## Instalación
+
+1. Clonar el repositorio
+
+```bash
+git clone https://github.com/DarkSack/DnD.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Instalar dependencias
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+# o
+yarn install
 ```
+
+3. Iniciar el servidor de desarrollo
+
+```bash
+npm run dev
+# o
+yarn dev
+```
+
+## Estructura del Proyecto
+
+```
+dndapp/
+├── src/
+│   ├── pages/          # Páginas principales
+│   │   ├── Characters/ # Componentes de gestión de personajes
+│   │   ├── Campaigns/  # Campañas futuras
+│   │   └── Home/       # Página principal
+│   ├── components/     # Componentes reutilizables
+│   ├── data/           # Datos de ejemplo
+│   └── router/         # Configuración de rutas
+└── public/             # Archivos estáticos
+```
+
+## Contribuir
+
+1. Crea una rama para tu feature:
+
+```bash
+git checkout -b feature/AmazingFeature
+```
+
+2. Commit tus cambios:
+
+```bash
+git commit -m 'Add some AmazingFeature'
+```
+
+3. Push a la rama:
+
+```bash
+git push origin feature/AmazingFeature
+```
+
+4. Abre un Pull Request
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT - ve el archivo [LICENSE](LICENSE) para detalles.

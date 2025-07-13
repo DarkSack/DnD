@@ -1,4 +1,6 @@
-// src/components/ui/Col.jsx
+// Col.tsx
+import { cn } from "@/lib/utils"; // o usa clsx directamente si no tienes esta función
+
 export function Col({
   children,
   className = "",
@@ -7,9 +9,7 @@ export function Col({
   className?: string;
 }) {
   return (
-    <div
-      className={`p-2 rounded-xl bg-stone-800 border border-stone-700 ${className}`}
-    >
+    <div className={cn("p-2 rounded-xl", className)}>
       {children}
     </div>
   );

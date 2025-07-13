@@ -3,6 +3,7 @@ import App from "../App";
 import Home from "../pages/Home";
 import Characters from "@/pages/Characters";
 import Campaigns from "@/pages/Campaigns";
+import CreateCharacter from "@/pages/Characters/CreateCharacter";
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "campaigns",
         element: <Campaigns />,
+      },
+      {
+        path: "characters/create",
+        element: <CreateCharacter />,
       },
     ],
   },
