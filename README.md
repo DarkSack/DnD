@@ -105,6 +105,18 @@ git push origin feature/AmazingFeature
 
 4. Abre un Pull Request
 
+# Avances
+- [x] Home
+![Home]("src/assets/Home.jpeg")
+- [x] Crear personajes
+![Creador de personajes]("src/assets/CharactersCreator.jpeg")
+- [x] Lista de personajes
+![Lista de personajes]("src/assets/CharactersList.jpeg")
+- [x] Crear salas
+![Creador de salas]("src/assets/RoomsCreator.jpeg")
+- [x] Panel Social
+![Panel Social]("src/assets/SocialPanel.jpeg")
+
 ## Licencia
 
 Este proyecto está bajo la licencia MIT - ve el archivo [LICENSE](LICENSE) para detalles.

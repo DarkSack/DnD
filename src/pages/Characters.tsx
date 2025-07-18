@@ -428,7 +428,7 @@ function Characters() {
                   {Math.round(
                     characters.reduce((acc, c) => acc + c.nivel, 0) /
                     characters.length
-                  )}
+                  ) || 0} 
                 </p>
               </div>
             </div>

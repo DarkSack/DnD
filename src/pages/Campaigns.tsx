@@ -101,10 +101,9 @@ const RoomCard = ({
     <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
       {/* Header con tema y estado */}
       <div
-        className={`bg-gradient-to-r ${
-          genreColors[room.genre as keyof typeof genreColors] ||
+        className={`bg-gradient-to-r ${genreColors[room.genre as keyof typeof genreColors] ||
           "from-blue-500 to-purple-600"
-        } p-4 text-white relative`}
+          } p-4 text-white relative`}
       >
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
@@ -114,9 +113,8 @@ const RoomCard = ({
             </span>
           </div>
           <span
-            className={`px-2 py-1 rounded-full text-xs font-medium ${
-              statusColors[room.status as keyof typeof statusColors]
-            }`}
+            className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[room.status as keyof typeof statusColors]
+              }`}
           >
             {statusLabels[room.status as keyof typeof statusLabels]}
           </span>
@@ -140,15 +138,14 @@ const RoomCard = ({
               </span>
             </div>
             <span
-              className={`px-2 py-1 rounded-full text-xs font-medium ${
-                difficultyColors[
-                  room.difficulty as keyof typeof difficultyColors
+              className={`px-2 py-1 rounded-full text-xs font-medium ${difficultyColors[
+                room.difficulty as keyof typeof difficultyColors
                 ]
-              }`}
+                }`}
             >
               {
                 difficultyLabels[
-                  room.difficulty as keyof typeof difficultyLabels
+                room.difficulty as keyof typeof difficultyLabels
                 ]
               }
             </span>
@@ -179,13 +176,12 @@ const RoomCard = ({
         {/* Barra de progreso de jugadores */}
         <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
           <div
-            className={`h-2 rounded-full ${
-              room.currentPlayers >= room.maxPlayers
+            className={`h-2 rounded-full ${room.currentPlayers >= room.maxPlayers
                 ? "bg-red-500"
                 : room.currentPlayers / room.maxPlayers >= 0.75
-                ? "bg-yellow-500"
-                : "bg-green-500"
-            }`}
+                  ? "bg-yellow-500"
+                  : "bg-green-500"
+              }`}
             style={{
               width: `${Math.min(
                 (room.currentPlayers / room.maxPlayers) * 100,
@@ -200,18 +196,17 @@ const RoomCard = ({
           <button
             onClick={() => onJoin(room)}
             disabled={room.status === "full" || room.status === "completed"}
-            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-              room.status === "full" || room.status === "completed"
+            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${room.status === "full" || room.status === "completed"
                 ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                 : "bg-blue-50 text-blue-600 hover:bg-blue-100"
-            }`}
+              }`}
           >
             <Users size={14} />
             {room.status === "full"
               ? "Llena"
               : room.status === "completed"
-              ? "Terminada"
-              : "Unirse"}
+                ? "Terminada"
+                : "Unirse"}
           </button>
           <button
             onClick={() => onView(room)}
@@ -386,21 +381,19 @@ const FilterBar = ({
         <div className="flex border border-gray-300 rounded-md overflow-hidden">
           <button
             onClick={() => onViewModeChange("grid")}
-            className={`px-3 py-2 ${
-              viewMode === "grid"
+            className={`px-3 py-2 ${viewMode === "grid"
                 ? "bg-blue-500 text-white"
                 : "bg-white text-gray-700 hover:bg-gray-50"
-            } transition-colors`}
+              } transition-colors`}
           >
             <Grid3X3 size={16} />
           </button>
           <button
             onClick={() => onViewModeChange("list")}
-            className={`px-3 py-2 ${
-              viewMode === "list"
+            className={`px-3 py-2 ${viewMode === "list"
                 ? "bg-blue-500 text-white"
                 : "bg-white text-gray-700 hover:bg-gray-50"
-            } transition-colors`}
+              } transition-colors`}
           >
             <List size={16} />
           </button>
@@ -432,11 +425,10 @@ const Pagination = ({
       <button
         key={i}
         onClick={() => onPageChange(i + 1)}
-        className={`px-3 py-2 rounded-md transition-colors ${
-          currentPage === i + 1
+        className={`px-3 py-2 rounded-md transition-colors ${currentPage === i + 1
             ? "bg-blue-500 text-white"
             : "border border-gray-300 hover:bg-gray-50"
-        }`}
+          }`}
       >
         {i + 1}
       </button>
@@ -606,11 +598,10 @@ function Rooms() {
 
         {/* Lista de salas */}
         <div
-          className={`grid gap-6 ${
-            viewMode === "grid"
+          className={`grid gap-6 ${viewMode === "grid"
               ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
               : "grid-cols-1"
-          }`}
+            }`}
         >
           <CreateRoomCard onCreate={handleCreateRoom} />
           {paginatedRooms.map((room) => (
