@@ -40,68 +40,7 @@ type Room = {
 };
 
 // Datos de prueba expandidos
-const rooms: Room[] = Array.from({ length: 18 }).map((_, i) => ({
-  id: `room-${i + 1}`,
-  name: [
-    "La Taberna del Dragón Dorado",
-    "Aventuras en las Tierras Salvajes",
-    "Misterios de Ravenloft",
-    "Campaña Espacial Estelar",
-    "Los Guardianes del Bosque",
-    "Intriga en la Corte Real",
-    "Expedición al Abismo",
-    "Crónicas Vampíricas",
-    "El Reino de las Sombras",
-    "Piratas del Mar Carmesí",
-    "Academia de Magia Arcana",
-    "Supervivencia Zombie",
-    "Cazadores de Demonios",
-    "La Ciudad Perdida",
-    "Guerra de los Elementos",
-    "Secretos del Templo",
-    "Aventura Cyberpunk",
-    "El Último Refugio",
-  ][i],
-  gameSystem: [
-    "D&D 5e",
-    "Pathfinder",
-    "Call of Cthulhu",
-    "Vampire",
-    "Cyberpunk 2020",
-    "GURPS",
-  ][i % 6],
-  genre: [
-    "Fantasía",
-    "Horror",
-    "Ciencia Ficción",
-    "Misterio",
-    "Aventura",
-    "Steampunk",
-  ][i % 6],
-  currentPlayers: Math.floor(Math.random() * 6) + 1,
-  maxPlayers: Math.floor(Math.random() * 3) + 4,
-  isPrivate: Math.random() > 0.7,
-  gameMaster: `GM ${i + 1}`,
-  description: `Una emocionante aventura llena de desafíos y misterios. Perfecta para jugadores que buscan una experiencia inmersiva.`,
-  nextSession:
-    Math.random() > 0.3
-      ? new Date(
-          Date.now() + Math.random() * 14 * 24 * 60 * 60 * 1000
-        ).toLocaleDateString()
-      : undefined,
-  status: ["active", "full", "paused", "completed"][
-    Math.floor(Math.random() * 4)
-  ] as "active" | "full" | "paused" | "completed",
-  difficulty: ["beginner", "intermediate", "advanced"][
-    Math.floor(Math.random() * 3)
-  ] as "beginner" | "intermediate" | "advanced",
-  duration: ["2-3 horas", "3-4 horas", "4+ horas"][
-    Math.floor(Math.random() * 3)
-  ],
-  createdAt: new Date(
-    Date.now() - Math.random() * 60 * 24 * 60 * 60 * 1000
-  ).toLocaleDateString(),
-}));
+const rooms: Room[] = [];
 
 const RoomCard = ({
   room,

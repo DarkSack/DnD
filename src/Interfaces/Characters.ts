@@ -21,6 +21,10 @@ interface Character {
   alineamiento: string;
   religion: string;
   datos_extra: string;
+  nivel: number;
+  estado: string;
+  campaign: string;
+  lastPlayed: string;
 }
 
 // Definir la interfaz de props para InputField
@@ -89,8 +93,49 @@ interface CharacterDisplayProps {
   className?: string;
 }
 
+
+// Tipos básicos
+interface FilterState {
+  search: string;
+  race: string;
+  class: CharacterClass;
+  status: string;
+}
+
+type SortBy = "name-asc" | "name-desc" | "level-asc" | "level-desc";
+
+type ViewMode = "grid" | "list";
+
+type CharacterClass =
+  | "Mago"
+  | "Guerrero"
+  | "Ladrón"
+  | "Clérigo"
+  | "Bárbaro"
+  | "Paladín";
+
+// Interfaces de props
+interface CharacterCardProps {
+  character: Character;
+  onEdit: (character: Character) => void;
+  onDelete: (character: Character) => void;
+  onView: (character: Character) => void;
+}
+
+interface FilterBarProps {
+  filters: FilterState;
+  onFilterChange: (filters: FilterState) => void;
+  viewMode: ViewMode;
+  onViewModeChange: (mode: ViewMode) => void;
+  sortBy: SortBy;
+  onSortChange: (sortBy: SortBy) => void;
+}
+
+
+
+
+
 export type {
-  Character,
   InputFieldProps,
   SelectOption,
   SelectFieldProps,
@@ -99,4 +144,11 @@ export type {
   SectionProps,
   CreationModalProps,
   CharacterDisplayProps,
+  Character,
+  FilterState,
+  SortBy,
+  ViewMode,
+  CharacterClass,
+  CharacterCardProps,
+  FilterBarProps,
 };

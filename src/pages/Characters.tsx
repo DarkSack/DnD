@@ -17,96 +17,10 @@ import {
   SortDesc,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
-type Character = {
-  id: string;
-  name: string;
-  race: string;
-  class: CharacterClass;
-  level: number;
-  avatar?: string;
-  lastPlayed?: string;
-  campaign?: string;
-  status: "active" | "inactive" | "archived";
-};
-
-// Tipos básicos
-interface FilterState {
-  search: string;
-  race: string;
-  class: CharacterClass;
-  status: string;
-}
-
-type SortBy = "name-asc" | "name-desc" | "level-asc" | "level-desc";
-
-type ViewMode = "grid" | "list";
-
-type CharacterClass =
-  | "Mago"
-  | "Guerrero"
-  | "Ladrón"
-  | "Clérigo"
-  | "Bárbaro"
-  | "Paladín";
-
-// Interfaces de props
-interface CharacterCardProps {
-  character: Character;
-  onEdit: (character: Character) => void;
-  onDelete: (character: Character) => void;
-  onView: (character: Character) => void;
-}
-
-interface FilterBarProps {
-  filters: FilterState;
-  onFilterChange: (filters: FilterState) => void;
-  viewMode: ViewMode;
-  onViewModeChange: (mode: ViewMode) => void;
-  sortBy: SortBy;
-  onSortChange: (sortBy: SortBy) => void;
-}
+import type { Character, CharacterCardProps, CharacterClass, FilterBarProps, FilterState, SortBy, ViewMode } from "../Interfaces/Characters";
 
 // Datos de prueba expandidos
-const characters: Character[] = [
-  {
-    id: "char-1",
-    name: "Personaje 1",
-    race: "Humano",
-    class: "Mago" as CharacterClass,
-    level: Math.floor(Math.random() * 20) + 1,
-    lastPlayed: new Date(
-      Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
-    ).toLocaleDateString(),
-    campaign: "Campaña de los Dragones",
-    status: "active" as "active" | "inactive" | "archived",
-  },
-  {
-    id: "char-2",
-    name: "Personaje 2",
-    race: "Elfo",
-    class: "Guerrero" as CharacterClass,
-    level: Math.floor(Math.random() * 20) + 1,
-    lastPlayed: new Date(
-      Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
-    ).toLocaleDateString(),
-    campaign: "Aventuras en Faerûn",
-    status: "inactive" as "active" | "inactive" | "archived",
-  },
-  // ... Repetir para los 20 personajes
-  {
-    id: "char-20",
-    name: "Personaje 20",
-    race: "Tiefling",
-    class: "Paladín" as CharacterClass,
-    level: Math.floor(Math.random() * 20) + 1,
-    lastPlayed: new Date(
-      Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
-    ).toLocaleDateString(),
-    campaign: "El Reino Perdido",
-    status: "archived" as "active" | "inactive" | "archived",
-  },
-];
+const characters: Character[] = [];
 
 const CharacterCard = ({
   character,
@@ -135,7 +49,7 @@ const CharacterCard = ({
     Paladín: Shield,
   };
 
-  const ClassIcon = classIcons[character.class] || Star;
+  const ClassIcon = classIcons[character.clase as keyof typeof classIcons] || Star;
 
   return (
     <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
@@ -147,16 +61,15 @@ const CharacterCard = ({
               <ClassIcon size={24} />
             </div>
             <div>
-              <h3 className="font-bold text-lg">{character.name}</h3>
-              <p className="text-blue-100 text-sm">Nivel {character.level}</p>
+              <h3 className="font-bold text-lg">{character.nombre}</h3>
+              <p className="text-blue-100 text-sm">Nivel {character.nivel}</p>
             </div>
           </div>
           <span
-            className={`px-2 py-1 rounded-full text-xs font-medium ${
-              statusColors[character.status]
-            }`}
+            className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[character.estado as keyof typeof statusColors]
+              }`}
           >
-            {statusLabels[character.status]}
+            {statusLabels[character.estado as keyof typeof statusLabels]}
           </span>
         </div>
       </div>
@@ -167,7 +80,7 @@ const CharacterCard = ({
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <Users size={14} />
             <span>
-              {character.race} - {character.class}
+              {character.raza} - {character.clase}
             </span>
           </div>
           {character.campaign && (
@@ -324,21 +237,19 @@ const FilterBar = ({
         <div className="flex border border-gray-300 rounded-md overflow-hidden">
           <button
             onClick={() => onViewModeChange("grid")}
-            className={`px-3 py-2 ${
-              viewMode === "grid"
-                ? "bg-blue-500 text-white"
-                : "bg-white text-gray-700 hover:bg-gray-50"
-            } transition-colors`}
+            className={`px-3 py-2 ${viewMode === "grid"
+              ? "bg-blue-500 text-white"
+              : "bg-white text-gray-700 hover:bg-gray-50"
+              } transition-colors`}
           >
             <Grid3X3 size={16} />
           </button>
           <button
             onClick={() => onViewModeChange("list")}
-            className={`px-3 py-2 ${
-              viewMode === "list"
-                ? "bg-blue-500 text-white"
-                : "bg-white text-gray-700 hover:bg-gray-50"
-            } transition-colors`}
+            className={`px-3 py-2 ${viewMode === "list"
+              ? "bg-blue-500 text-white"
+              : "bg-white text-gray-700 hover:bg-gray-50"
+              } transition-colors`}
           >
             <List size={16} />
           </button>
@@ -370,11 +281,10 @@ const Pagination = ({
       <button
         key={i}
         onClick={() => onPageChange(i + 1)}
-        className={`px-3 py-2 rounded-md transition-colors ${
-          currentPage === i + 1
-            ? "bg-blue-500 text-white"
-            : "border border-gray-300 hover:bg-gray-50"
-        }`}
+        className={`px-3 py-2 rounded-md transition-colors ${currentPage === i + 1
+          ? "bg-blue-500 text-white"
+          : "border border-gray-300 hover:bg-gray-50"
+          }`}
       >
         {i + 1}
       </button>
@@ -423,25 +333,25 @@ function Characters() {
   // Filtrar y ordenar personajes
   const filteredCharacters = characters
     .filter((char: Character) => {
-      const matchesSearch = char.name
+      const matchesSearch = char.nombre
         .toLowerCase()
         .includes(filters.search.toLowerCase());
-      const matchesRace = !filters.race || char.race === filters.race;
-      const matchesClass = !filters.class || char.class === filters.class;
-      const matchesStatus = !filters.status || char.status === filters.status;
+      const matchesRace = !filters.race || char.raza === filters.race;
+      const matchesClass = !filters.class || char.clase === filters.class;
+      const matchesStatus = !filters.status || char.estado === filters.status;
 
       return matchesSearch && matchesRace && matchesClass && matchesStatus;
     })
     .sort((a: Character, b: Character) => {
       switch (sortBy) {
         case "name-asc":
-          return a.name.localeCompare(b.name);
+          return a.nombre.localeCompare(b.nombre);
         case "name-desc":
-          return b.name.localeCompare(a.name);
+          return b.nombre.localeCompare(a.nombre);
         case "level-asc":
-          return a.level - b.level;
+          return a.nivel - b.nivel;
         case "level-desc":
-          return b.level - a.level;
+          return b.nivel - a.nivel;
         default:
           return 0;
       }
@@ -502,7 +412,7 @@ function Characters() {
               <div>
                 <p className="text-sm text-gray-500">Personajes Activos</p>
                 <p className="text-2xl font-bold text-gray-900">
-                  {characters.filter((c) => c.status === "active").length}
+                  {characters.filter((c) => c.estado === "active").length}
                 </p>
               </div>
             </div>
@@ -516,8 +426,8 @@ function Characters() {
                 <p className="text-sm text-gray-500">Nivel Promedio</p>
                 <p className="text-2xl font-bold text-gray-900">
                   {Math.round(
-                    characters.reduce((acc, c) => acc + c.level, 0) /
-                      characters.length
+                    characters.reduce((acc, c) => acc + c.nivel, 0) /
+                    characters.length
                   )}
                 </p>
               </div>
@@ -527,11 +437,10 @@ function Characters() {
 
         {/* Lista de personajes */}
         <div
-          className={`grid gap-6 ${
-            viewMode === "grid"
-              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-              : "grid-cols-1"
-          }`}
+          className={`grid gap-6 ${viewMode === "grid"
+            ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            : "grid-cols-1"
+            }`}
         >
           <CreateCharacterCard onCreate={handleCreateCharacter} />
           {paginatedCharacters.map((character) => (
