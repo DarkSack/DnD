@@ -3,25 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { User, BookOpen, Shield, Dice1, Sparkles } from "lucide-react";
+import type { MenuItem, MenuCardProps } from "@/Interfaces/Home";
 
-// Definir la interfaz para los items del menú
-interface MenuItem {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-  path: string;
-  buttonText: string;
-  gradient: string;
-}
-
-// Definir la interfaz de props para MenuCard
-interface MenuCardProps {
-  item: MenuItem;
-  navigate: (path: string) => void;
-}
-
-const menuItems = [
+const menuItems: MenuItem[] = [
   {
     id: "characters",
     title: "Personajes",
@@ -41,11 +25,11 @@ const menuItems = [
     gradient: "from-green-500 to-teal-600",
   },
   {
-    id: "dice",
+    id: "dices",
     title: "Dados",
     description: "Simulador de dados de D&D",
     icon: Dice1,
-    path: "/dice",
+    path: "/dices",
     buttonText: "Tirar Dados",
     gradient: "from-red-500 to-pink-600",
   },

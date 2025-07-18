@@ -14,91 +14,16 @@ import {
   Sparkles,
   UserPlus,
 } from "lucide-react";
-
-interface Character {
-  nombre: string;
-  genero: string;
-  raza: string;
-  clase: string;
-  edad: number;
-  rasgos_fisicos: string[];
-  personalidad: string[];
-  trasfondo: string;
-  atributos: {
-    fuerza: number;
-    destreza: number;
-    constitucion: number;
-    inteligencia: number;
-    sabiduria: number;
-    carisma: number;
-  };
-  habilidades: string[];
-  rasgos_unicos: string[];
-  alineamiento: string;
-  religion: string;
-  datos_extra: string;
-}
-
-// Definir la interfaz de props para InputField
-interface InputFieldProps {
-  label: string;
-  id: string;
-  value: string | number;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: string;
-  placeholder?: string;
-}
-
-// Definir la interfaz para una opción de select
-interface SelectOption {
-  value: string;
-  label: string;
-}
-
-// Definir la interfaz de props para SelectField
-interface SelectFieldProps {
-  label: string;
-  id: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  options: SelectOption[];
-  placeholder?: string;
-}
-
-// Definir la interfaz de props para TextareaField
-interface TextareaFieldProps {
-  label: string;
-  id: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  rows?: number;
-  placeholder?: string;
-}
-
-// Definir la interfaz de props para AttributeField
-interface AttributeFieldProps {
-  label: string;
-  id: string;
-  value: number;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-}
-
-// Definir la interfaz de props para Section
-interface SectionProps {
-  title: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-  children: React.ReactNode;
-  className?: string;
-}
-
-// Definir la interfaz de props para CreationModal
-interface CreationModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onCreateAI: () => void;
-  loading: boolean;
-}
+import type {
+  InputFieldProps,
+  SelectFieldProps,
+  TextareaFieldProps,
+  AttributeFieldProps,
+  SectionProps,
+  CreationModalProps,
+  Character,
+} from "@/Interfaces/Characters";
+import ShortUniqueId from "short-unique-id";
 
 // Componente para campos de entrada
 const InputField = ({
@@ -178,7 +103,13 @@ const TextareaField = ({
 );
 
 // Componente para atributos numéricos
-const AttributeField = ({ label, id, value, onChange, icon: Icon }: AttributeFieldProps) => (
+const AttributeField = ({
+  label,
+  id,
+  value,
+  onChange,
+  icon: Icon,
+}: AttributeFieldProps) => (
   <div className="bg-gray-50 rounded-lg p-3 space-y-2">
     <div className="flex items-center gap-2">
       <Icon size={16} className="text-gray-600" />
@@ -199,7 +130,12 @@ const AttributeField = ({ label, id, value, onChange, icon: Icon }: AttributeFie
 );
 
 // Componente para secciones
-const Section = ({ title, icon: Icon, children, className = "" }: SectionProps) => (
+const Section = ({
+  title,
+  icon: Icon,
+  children,
+  className = "",
+}: SectionProps) => (
   <div
     className={`bg-white rounded-lg shadow-sm border border-gray-200 p-6 ${className}`}
   >
@@ -212,7 +148,12 @@ const Section = ({ title, icon: Icon, children, className = "" }: SectionProps) 
 );
 
 // Modal de creación
-const CreationModal = ({ isOpen, onClose, onCreateAI, loading }: CreationModalProps) => {
+const CreationModal = ({
+  isOpen,
+  onClose,
+  onCreateAI,
+  loading,
+}: CreationModalProps) => {
   if (!isOpen) return null;
 
   return (
@@ -255,9 +196,11 @@ const CreationModal = ({ isOpen, onClose, onCreateAI, loading }: CreationModalPr
     </div>
   );
 };
+const uid = new ShortUniqueId({ length: 20, dictionary: "alphanum" });
 
 function CreateCharacter() {
   const [character, setCharacter] = useState<Character>({
+    id: uid.rnd(),
     nombre: "",
     genero: "",
     raza: "",
@@ -315,33 +258,43 @@ function CreateCharacter() {
   const generoOptions = [
     { value: "Masculino", label: "Masculino" },
     { value: "Femenino", label: "Femenino" },
+    { value: "No binario", label: "No binario" },
     { value: "Otro", label: "Otro" },
   ];
 
   const razaOptions = [
-    { value: "Human", label: "Humano" },
+    { value: "Humano", label: "Humano" },
     { value: "Elfo", label: "Elfo" },
     { value: "Enano", label: "Enano" },
     { value: "Gnomo", label: "Gnomo" },
     { value: "Mediano", label: "Mediano" },
     { value: "Tiefling", label: "Tiefling" },
+    { value: "Dracónido", label: "Dracónido" },
   ];
 
   const claseOptions = [
+    { value: "Guerrero", label: "Guerrero" },
     { value: "Mago", label: "Mago" },
     { value: "Clérigo", label: "Clérigo" },
-    { value: "Guerrero", label: "Guerrero" },
-    { value: "Ladrón", label: "Ladrón" },
+    { value: "Pícaro", label: "Pícaro" },
     { value: "Bárbaro", label: "Bárbaro" },
     { value: "Paladín", label: "Paladín" },
+    { value: "Explorador", label: "Explorador" },
+    { value: "Hechicero", label: "Hechicero" },
+    { value: "Druida", label: "Druida" },
+    { value: "Monje", label: "Monje" },
   ];
 
   const alineamientoOptions = [
-    { value: "Bueno", label: "Bueno" },
+    { value: "Legal Bueno", label: "Legal Bueno" },
+    { value: "Neutral Bueno", label: "Neutral Bueno" },
+    { value: "Caótico Bueno", label: "Caótico Bueno" },
+    { value: "Legal Neutral", label: "Legal Neutral" },
     { value: "Neutral", label: "Neutral" },
-    { value: "Malo", label: "Malo" },
-    { value: "Leal", label: "Leal" },
-    { value: "Caótico", label: "Caótico" },
+    { value: "Caótico Neutral", label: "Caótico Neutral" },
+    { value: "Legal Malvado", label: "Legal Malvado" },
+    { value: "Neutral Malvado", label: "Neutral Malvado" },
+    { value: "Caótico Malvado", label: "Caótico Malvado" },
   ];
 
   return (
