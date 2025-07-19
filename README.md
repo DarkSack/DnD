@@ -107,15 +107,23 @@ git push origin feature/AmazingFeature
 
 # Avances
 - [x] Home
-![Home]("src/assets/Home.jpeg")
+
+![Home](https://drive.google.com/uc?export=view&id=1vVKn182k019Tno3HrOMpGiqfucz602fa)
 - [x] Crear personajes
-![Creador de personajes]("src/assets/CharactersCreator.jpeg")
+
+![Creador de personajes](https://drive.google.com/uc?export=view&id=1GpFcCfFh1-yAo3PUZ0KYJEEBsIeaznrW)
+
 - [x] Lista de personajes
-![Lista de personajes]("src/assets/CharactersList.jpeg")
+
+![Lista de personajes](https://drive.google.com/uc?export=view&id=1dgb7gaHqDahAPeR9vunfYN1IIfEMWrha)
+
 - [x] Crear salas
-![Creador de salas]("src/assets/RoomsCreator.jpeg")
+
+![Creador de salas](https://drive.google.com/uc?export=view&id=1N38bHs7hYEaoEktzKwSCJUuy0UeXcD87)
+
 - [x] Panel Social
-![Panel Social]("src/assets/SocialPanel.jpeg")
+
+![Panel Social](https://drive.google.com/uc?export=view&id=1Wv8kJvy6M6RqA3l5PGZuxf--S6gSm4DZ)
 
 ## Licencia
 
