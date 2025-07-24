@@ -1,0 +1,32 @@
+{
+  "settings": {
+    "title": "Settings",
+    "description": "Adjust every detail to your liking",
+    "accountSettingsSection": "Account",
+    "profileSettings": "Profile",
+    "profileSettingsDetails": "Manage your personal information and avatar",
+    "profileSettingsPrivacy": "Privacy",
+    "profileSettingsPrivacyDescription": "Manage who can see your profile",
+    "profileSettingsBackup": "Backup your data",
+    "profileSettingsBackupDescription": "Export and backup your characters and campaigns",
+    "customizationSection": "Personalization",
+    "customizationAppearance": "Appearance",
+    "customizationAppearanceDescription": "Customize the app theme",
+    "customizationLanguage": "Language",
+    "customizationLanguageDescription": "Customize the app language",
+    "customizationThemeLight": "Light",
+    "customizationThemeDark": "Dark",
+    "customizationLanguageSpanish": "Spanish",
+    "customizationLanguageEnglish": "English",
+    "NotificationsSection": "Notifications",
+    "NotificationsDescription": "Manage the notifications you receive",
+    "NotificationSounds": "Sounds",
+    "NotificationSoundsDescription": "Manage the sounds you receive",
+    "dangerZone": "Danger Zone",
+    "dangerZoneDeleteData": "Delete data",
+    "dangerZoneDeleteDataDescription": "Delete all your data from the app",
+    "dangerZoneDeleteAccount": "Delete account",
+    "dangerZoneDeleteAccountDescription": "Delete your account permanently and all your data",
+    "footer": "Customize your adventure!"
+  }
+}

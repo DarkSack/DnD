@@ -1,0 +1,89 @@
+/* --- Contenedor Principal --- */
+.dice-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem; /* Espacio entre el dado y el botón */
+  padding: 2rem;
+  background-color: #f0f0f0;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Estilo del Dado --- */
+.dice {
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff;
+  border: 3px solid #333;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.dice-number {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #333;
+  font-family: "Arial", sans-serif;
+}
+
+/* --- Animación de Rodar --- */
+/* Esta es la clase que se añade cuando isRolling es true */
+.dice.rolling {
+  animation: roll 1s ease-in-out;
+}
+
+/* Define los pasos de la animación */
+@keyframes roll {
+  0% {
+    transform: rotate(0deg) scale(1) translateX(0);
+  }
+  25% {
+    transform: rotate(180deg) scale(1.2) translateX(-20px);
+  }
+  50% {
+    transform: rotate(360deg) scale(0.9) translateX(20px);
+  }
+  75% {
+    transform: rotate(540deg) scale(1.1) translateX(-10px);
+  }
+  100% {
+    transform: rotate(720deg) scale(1) translateX(0);
+  }
+}
+
+/* --- Estilo del Botón --- */
+.roll-button {
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #d90429, #ef233c);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(239, 35, 60, 0.4);
+  transition: all 0.2s ease-in-out;
+}
+
+.roll-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 35, 60, 0.5);
+}
+
+.roll-button:active {
+  transform: translateY(0);
+}
+
+/* Estilo para cuando el botón está deshabilitado */
+.roll-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: translateY(0);
+}

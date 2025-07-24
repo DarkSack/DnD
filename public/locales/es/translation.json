@@ -1,0 +1,33 @@
+{
+  "settings": {
+    "title": "Configuración",
+    "description":"Ajusta cada detalle a tu gusto",
+    "accountSettingsSection": "Cuenta",
+    "profileSettings": "Perfil",
+    "profileSettingsDetails": "Administra tu información personal y avatar",
+    "profileSettingsPrivacy": "Privacidad",
+    "profileSettingsPrivacyDescription": "Administra quién puede ver tu perfil",
+    "profileSettingsBackup": "Respaldo de datos",
+    "profileSettingsBackupDescription": "Exporta y respalda tus personajes y campañas",
+    "customizationSection": "Personalización",
+    "customizationAppearance": "Apariencia",
+    "customizationAppearanceDescription": "Personaliza el tema de la aplicación",
+    "customizationLanguage": "Idioma",
+    "customizationLanguageDescription": "Personaliza el idioma de la aplicación",
+    "customizationThemeLight": "Claro",
+    "customizationThemeDark": "Oscuro",
+    "customizationLanguageSpanish": "Español",
+    "customizationLanguageEnglish": "Inglés",
+    "NotificationsSection": "Notificaciones",
+    "Notifications": "Alertas y Avisos",
+    "NotificationsDescription": "Administra las notificaciones que recibes",
+    "NotificationSounds": "Sonidos",
+    "NotificationSoundsDescription": "Administra los sonidos que recibes",
+    "dangerZone": "Zona de peligro",
+    "dangerZoneDeleteData": "Eliminar datos",
+    "dangerZoneDeleteDataDescription": "Eliminar todos tus datos de la aplicación",
+    "dangerZoneDeleteAccount": "Eliminar cuenta",
+    "dangerZoneDeleteAccountDescription": "Eliminar tu cuenta permanentemente y todos los datos",
+    "footer": "¡Personaliza tu aventura!"
+  }
+}
