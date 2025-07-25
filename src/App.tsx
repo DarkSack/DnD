@@ -5,8 +5,10 @@ import { SidebarGroup } from "./components/ui/SidebarGroup";
 import { Home, User, BookOpen, MessageCircle, UserPlus, Settings } from "lucide-react";
 import "./i18n";
 import { usePreferencesStore } from "./store/userPreferencesStore";
+import { useAuthStore } from "./store/authStore";
 export default function App({ children }: { children: React.ReactNode }) {
   const { theme } = usePreferencesStore();
+  const { user } = useAuthStore();
   useEffect(() => {
     const root = document.documentElement;
     if (theme === "dark") {
@@ -19,7 +21,7 @@ export default function App({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen">
-      <Sidebar>
+      {user && <Sidebar>
         <SidebarGroup label="General">
           <SidebarItem icon={Home} label="Inicio" to="/" />
           <SidebarItem icon={User} label="Personajes" to="/characters" />
@@ -37,7 +39,7 @@ export default function App({ children }: { children: React.ReactNode }) {
         <SidebarGroup label="Configuración">
           <SidebarItem icon={Settings} label="Configuración" to="/settings" />
         </SidebarGroup>
-      </Sidebar>
+      </Sidebar>}
 
       <main className="flex-1 bg-gray-50">{children}</main>
     </div>
